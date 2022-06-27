@@ -1,4 +1,4 @@
-package task;
+package task.compare;
 
 public class Comparison {
 
