@@ -1,2 +1,2 @@
 # learning
-Solving simple problems for java
+Solving simple tasks for java
