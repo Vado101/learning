@@ -1,5 +1,7 @@
 package task.compare;
 
+import java.util.Comparator;
+
 public class Car implements Comparable<Car> {
 
 	private final int id;
@@ -55,9 +57,9 @@ public class Car implements Comparable<Car> {
 		Car car = (Car) o;
 
 		if (this.id != car.id) return false;
-		if (brand != null ? !brand.equals(car.brand) : car.brand != null) 
+		if (brand != null ? !brand.equals(car.brand) : car.brand != null)
 			return false;
-		if (owner != null ? !owner.equals(car.owner) : car.owner != null) 
+		if (owner != null ? !owner.equals(car.owner) : car.owner != null)
 			return false;
 		return mileage == car.mileage;
 	}
@@ -65,8 +67,8 @@ public class Car implements Comparable<Car> {
 	@Override
 	public int hashCode() {
 		int result = id;
-		result = 31 * result + (brand != null ? brand.hashCode() : 0);
-		result = 31 * result + (owner != null ? owner.hashCode() : 0);
+		result = 31 * result + (brand == null ? 0 : brand.hashCode());
+		result = 31 * result + (owner == null ? 0 : owner.hashCode());
 		return 31 * result + mileage;
 	}
 
@@ -76,5 +78,14 @@ public class Car implements Comparable<Car> {
 		", brand=" + brand +
 		", owner=" + owner +
 		", mileage=" + mileage + "}";
+	}
+
+
+	public static class BrandComparator implements Comparator<Car> {
+
+		@Override
+		public int compare(Car car_1, Car car_2) {
+			return car_1.brand.compareTo(car_2.brand);
+		}
 	}
 }
